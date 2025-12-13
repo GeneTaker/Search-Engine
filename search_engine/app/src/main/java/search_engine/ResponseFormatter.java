@@ -1,5 +1,9 @@
 package search_engine;
 
-public class ResponseFormatter {
+import java.util.List;
 
+public class ResponseFormatter {
+    public static String formatText(List<SearchResult> results) {
+        return "not implemented yet";
+    }
 }
