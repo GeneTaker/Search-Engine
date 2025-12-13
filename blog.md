@@ -21,14 +21,22 @@ contain the phrase
 Classes:
 - engine_controller: Provides low level access to our search engine
 
-- response_formatter: Formats results in a direct/informative manner to the user
+- response_formatter: Formats results in a direct/informative manner to the user (could be an unnecessary abstraction of logic)
 
 - search_engine: Orchestrates/directs actions within the system, pulls results from the index, sorts them according to some ranking, and formats it
     - If multiple ranking strategies are used later on, then we will require strategy pattern to be used to change between these during runtime 
 
-- index: a map that maps tokens/keywords their respective pages
+- index: a map that maps tokens/keywords their respective postings
 
-- posting: a wrapper of a document/page that contains metadata of a page
+- posting: a wrapper of a document/page that contains metadata of a page. represents a single document occurrence of a term
+
+- search_result: what the user sees after querying 
+
+- document_loader: translates existing data into documents
+
+- document: a wrapper for a file, to provide a safe, controlled means to access data
+
+
 
 
 
