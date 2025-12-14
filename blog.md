@@ -36,6 +36,8 @@ Classes:
 
 - document: a wrapper for a file, to provide a safe, controlled means to access data
 
+- tokeniser: small abstraction of tokenisation logic
+
 
 
 
