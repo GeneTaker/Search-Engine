@@ -12,7 +12,12 @@ public class DocumentLoader {
         this.directory = Paths.get(directory);
         this.fileTypes = fileTypes;
     }
-
+    /**
+     * 
+     * @param fileName
+     * @throws InvalidLoadException if file type is not supported
+     * @return
+     */
     public List<Document> loadDocument() {
         return null;
     }
