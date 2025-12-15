@@ -27,7 +27,7 @@ public class TokenTest {
     @Tag("Token-2")
     @DisplayName("Test that tokens contain all relevant tokens and are lowercase")
     public void testTokenise() {
-        Document doc = new Document(1, "How to Manage Your Anger", "The Quick Brown Fox Jumped Over the Grey Fence");
+        Document doc = new Document("How to Manage Your Anger", "The Quick Brown Fox Jumped Over the Grey Fence");
         
         List<String> titleTokens = doc.tokeniseTitle();
         List<String> contentTokens = doc.tokeniseContent();
@@ -41,7 +41,7 @@ public class TokenTest {
     @Tag("Token-3")
     @DisplayName("Test that tokens can contain special character phrases")
     public void testSpecials() {
-        Document doc = new Document(1, "      ", "New *blanket = $5.99");
+        Document doc = new Document("      ", "New *blanket = $5.99");
         
         List<String> titleTokens = doc.tokeniseTitle();
         List<String> contentTokens = doc.tokeniseContent();

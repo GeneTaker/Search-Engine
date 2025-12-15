@@ -1,20 +1,19 @@
 package search_engine.document;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
+import search_engine.Tokeniser;
+
 public class Document {
-    private int docId;
     private String title;
     private String content;
 
-    public Document(int id, String title, String content) {
-        this.docId = id;
+    public Document(String title, String content) {
         this.title = title;
         this.content = content;
-    }
-
-    public int getDocId() {
-        return docId;
     }
 
     public String getTitle() {
@@ -24,12 +23,60 @@ public class Document {
     public String getContent() {
         return content;
     }
-
+    
+    /**
+     * tokenises the title of the document
+     * @return list of token strings
+     */
     public List<String> tokeniseTitle() {
-        return null;
+        return Tokeniser.tokenise(title);
     }
 
+    /**
+     * tokenises the content of the document
+     * @return list of token strings
+     */
     public List<String> tokeniseContent() {
-        return null;
+        return Tokeniser.tokenise(content);
+    }
+
+    /**
+     * Converts a path to a document
+     * @return a document object
+     */
+    public static Document createDocument(Path file) {
+        String content = "";
+        try {
+            content = Files.readString(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        String title = file.getFileName().toString();
+        
+        int index = title.lastIndexOf(".");
+
+        String stripped = title.substring(0, index);
+        stripped = separateWords(stripped);
+        
+        return new Document(stripped, content);
+    }
+
+    /**
+     * Converts snake case file names to text
+     * @param words a snake case name
+     * @return a string that has the first letter of each word capitalised
+     */
+    private static String separateWords(String words) {
+        String resultant = "";
+        String[] split = words.split("_");
+
+        int n = split.length;
+        for (int i = 0; i < n; i++) {
+            if (!split[i].isEmpty()) {
+                resultant += split[i].substring(0, 1).toUpperCase() + split[i].substring(1) + " ";
+            }
+        } 
+        return resultant.strip();
     }
 }

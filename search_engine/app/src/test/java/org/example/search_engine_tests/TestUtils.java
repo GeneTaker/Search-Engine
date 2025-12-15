@@ -18,10 +18,10 @@ public class TestUtils {
 
     public static boolean checkToken(List<String> tokens) {
         for (String t : tokens) {
-            Pattern pattern = Pattern.compile("\\s");
+            Pattern pattern = Pattern.compile("\\s+");
             Matcher matcher = pattern.matcher(t);
 
-            if (t.equals(t.toLowerCase()) || matcher.find()) return false;
+            if (!t.equals(t.toLowerCase()) || matcher.find()) return false;
         }
 
         return true;
