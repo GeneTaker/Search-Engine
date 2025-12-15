@@ -1,28 +1,26 @@
 package search_engine;
 
-import search_engine.document.Document;
-
 public class Posting {
     private int searchFrequency;
-    private Document doc;
+    private int docId;
 
-    public Posting(Document doc) {
-        this.doc = doc;
+    public Posting(int docId) {
+        this.docId = docId;
         searchFrequency = 0;
     }
 
     /**
-     * @return the document information from the posting
+     * @return the id to the document that the posting refers to
      */
-    public Document showDocument() {
-        return null;        
+    public int retrieveId() {
+        return docId;         
     }
 
     /**
      * @return the number of times a document has been searched
      */
     public int getFrequency() {
-        return 0;
+        return searchFrequency;
     }
 
 }
