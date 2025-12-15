@@ -79,4 +79,33 @@ public class Document {
         } 
         return resultant.strip();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+
+        if (obj == null) return false;
+
+        if (getClass() != obj.getClass()) return false;
+
+        Document other = (Document) obj;
+
+        if (title == null) {
+            if (other.title != null) {
+                return false;
+            }
+        } else if (!title.equals(other.title)) {
+            return false;
+        }
+        if (content == null) {
+            if (other.content != null) {
+                return false;
+            }
+        } else if (!content.equals(other.content)) {
+            return false;
+        }
+        return true;
+    }
+
+    
 }

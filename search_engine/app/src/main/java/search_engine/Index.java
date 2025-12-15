@@ -43,7 +43,7 @@ public class Index {
      * @param text the text input
      * @return a list of tokens
      */
-    public List<String> tokenise(String text) {
+    private List<String> tokenise(String text) {
         return null;
     }
 

@@ -4,9 +4,9 @@ public class Posting {
     private int searchFrequency;
     private int docId;
 
-    public Posting(int docId) {
+    public Posting(int docId, int searchFrequency) {
         this.docId = docId;
-        searchFrequency = 0;
+        this.searchFrequency = searchFrequency;
     }
 
     /**
