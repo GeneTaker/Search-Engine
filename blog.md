@@ -25,6 +25,7 @@ Classes:
 
 - search_engine: Orchestrates/directs actions within the system, pulls results from the index, sorts them according to some ranking, and formats it
     - If multiple ranking strategies are used later on, then we will require strategy pattern to be used to change between these during runtime 
+    - Search engine will use composite pattern to handle logical operators in searches
 
 - index: a map that maps tokens/keywords their respective postings
 
@@ -39,6 +40,10 @@ Classes:
 - tokeniser: small abstraction of tokenisation logic
 
 
+## Notes: ##
+- Search engine will be made so that logical operators can be applied to search queries to ensure tokens can be combined to give a relevant search result
+    - These operators include AND, OR and NOT, and must be capitalised in the search query to be regarded as operators rather than tokens.
 
+- At a later point, posting should be modified to account for searchFrequency so it can be used in ranking logic
 
 
