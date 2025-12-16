@@ -113,9 +113,9 @@ public class SearchEngineTest {
         TestUtils.assertListAreEqualIgnoringOrder(results, Arrays.asList(Arrays.asList(new Document("banana", "bread is very cool, not your bread though"),
             new Document("how to train your dragon", "The quick brown fox jumped over the lazy and stupid rabbit, or maybe it could not"))));
     
-        List<Document> complex = TestUtils.searchToDocuments(engine, "happy AND NOT today OR your NOT rabbit");
-        TestUtils.assertListAreEqualIgnoringOrder(Arrays.asList(new Document("banana", "bread is very cool, not your bread though"), 
-            new Document("happy", "happy discord time, you know the drift and the way to your heart")), complex);
+        List<Document> complex = TestUtils.searchToDocuments(engine, "happy AND NOT today OR jumped fox OR NOT your");
+        TestUtils.assertListAreEqualIgnoringOrder(Arrays.asList(new Document("happy", "happy discord time, you know the drift and the way to your heart"),
+            new Document("how to train your dragon", "The quick brown fox jumped over the lazy and stupid rabbit, or maybe it could not")), complex);
     }
     
 }
