@@ -1,12 +1,12 @@
 package search_engine;
 
 public class Posting {
-    private int searchFrequency;
+    private int termFrequency;
     private int docId;
 
-    public Posting(int docId, int searchFrequency) {
+    public Posting(int docId, int termFrequency) {
         this.docId = docId;
-        this.searchFrequency = searchFrequency;
+        this.termFrequency = termFrequency;
     }
 
     /**
@@ -20,7 +20,7 @@ public class Posting {
      * @return the number of times a document has been searched
      */
     public int getFrequency() {
-        return searchFrequency;
+        return termFrequency;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class Posting {
 
         Posting other = (Posting) obj;
 
-        if (searchFrequency != other.searchFrequency) {
+        if (termFrequency != other.termFrequency) {
             return false;
         }
         if (docId != other.docId) {

@@ -56,7 +56,7 @@ public class Index {
     public Document getDocument(int docId) {
         return docIdMap.get(docId);
     }
-
+    
     /**
      * @return a list of all documents
      */

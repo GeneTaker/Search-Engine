@@ -3,6 +3,8 @@ package search_engine;
 import java.util.List;
 
 import search_engine.document.Document;
+import search_engine.search_nodes.NodeFactory;
+import search_engine.search_nodes.SearchNode;
 
 public class SearchEngine {
     private Index index = new Index();
@@ -31,6 +33,10 @@ public class SearchEngine {
      * @return a list of search results
      */
     public List<SearchResult> search(String query) {
+        // SearchNode node = NodeFactory.createNode(index, query);
+        // List<Posting> postings = node.evaluate();
+
+
         return null;
     }
 
