@@ -59,5 +59,8 @@ To accomodate, the following classes will be created:
 - **AndNode**: Implements *SearchNode*, represents an AND logical operator
 - **OrNode**: Implements *SearchNode*, represents the OR logical operator
 - **NotNode**: Implements *SearchNode*, represents the NOT logical operator (note the NOT operator will function as a complement operation rather than a set difference operation)
+- **ImplicitAndNode**: Implements *SearchNode*, represents an implicit AND between adjacent tokens/words
+- **TokenNode**: Implements *SearchNode*, the leaf node
+- **NodeFactory**: A factory class that contains the abstracted creation logic of SearchNodes 
 
-__Additional Note__: Each of these operations will have operator precedence, which we introduce when generating the tree, it will proceed in the order NOT -> AND -> OR. Additionally, we will have an "implicit and" when working with searches, where all adjacent tokens will have an implicit AND operation between them, thereby allowing us to perform logical operations on multi-word phrases rather than just singular words
+__Additional Note__: Each of these operations will have operator precedence, which we introduce when generating the tree, it will proceed in the order NOT -> AND -> OR. Additionally, we will have an "implicit and" when working with searches which has the highest operator precedence, where all adjacent tokens will have an implicit AND operation between them, thereby allowing us to perform logical operations on multi-word phrases rather than just singular words
