@@ -5,15 +5,25 @@ import java.util.List;
 import search_engine.document.Document;
 
 public class SearchEngine {
-    private Index index = new Index();
+    private Index index;
     private ResponseFormatter formatter = new ResponseFormatter();
 
     /**
      * Adds documents to the index
      * @param documents: the list of documents to be added
+     * @returns list of document ids for each added document
      */
-    public void addDocuments(List<Document> documents) {
+    public List<Integer> addDocuments(List<Document> documents) {
+        return null;
+    }
 
+    /**
+     * Retrieves a document from the index
+     * @param docId
+     * @return the corresponding document
+     */
+    public Document getDocument(int docId) {
+        return null;
     }
 
     /**
@@ -31,6 +41,4 @@ public class SearchEngine {
     public List<Document> getDocuments() {
         return index.getDocuments();
     }
-
-    
 }

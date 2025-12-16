@@ -6,6 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
+import search_engine.SearchEngine;
+import search_engine.document.Document;
 
 public class TestUtils {
     public static void assertListAreEqualIgnoringOrder(List<?> a, List<?> b) {
@@ -25,5 +29,11 @@ public class TestUtils {
         }
 
         return true;
+    }
+
+    public static List<Document> searchToDocuments(SearchEngine engine, String query) {
+        return engine.search(query).stream()
+            .map(s -> engine.getDocument(s.getDocId()))
+            .collect(Collectors.toList());
     }
 }
