@@ -1,20 +1,39 @@
 package search_engine.search_nodes;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import search_engine.Posting;
 
 public class OrNode implements SearchNode {
-    private SearchNode leftChild;
-    private SearchNode rightChild;
+    private List<SearchNode> searchNodes;
 
-    public OrNode(SearchNode leftChild, SearchNode rightChild) {
-        this.leftChild = leftChild;
-        this.rightChild = rightChild;
+    public OrNode(List<SearchNode> searchNodes) {
+        this.searchNodes = searchNodes;
     }
 
     @Override
     public List<Posting> evaluate() {
-        return null;
+        if (searchNodes == null || searchNodes.isEmpty()) return new ArrayList<>();
+
+        Set<Posting> postings = new HashSet<>();
+        
+        searchNodes.forEach(s -> s.evaluate().forEach(p -> postings.add(p)));
+
+        return postings.stream().toList();
+    }
+
+    @Override
+    public void prettyPrint() {
+        System.err.print("OR {");
+
+        searchNodes.forEach(s -> {
+            s.prettyPrint();
+            System.err.println("|");
+        });
+
+        System.err.println("\n}");
     }
 }

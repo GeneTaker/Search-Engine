@@ -85,7 +85,6 @@ public class DocumentLoaderTest {
             List<String> titles = docs.stream().map(a -> a.getTitle()).collect(Collectors.toList());
             List<String> contents = docs.stream().map(a -> a.getContent()).collect(Collectors.toList());
             
-            System.err.println(titles);
             TestUtils.assertListAreEqualIgnoringOrder(titles, Arrays.asList("Crazy Frog", "File"));
             TestUtils.assertListAreEqualIgnoringOrder(contents, Arrays.asList("funkytown apples", "dunkytown rail"));       
         });

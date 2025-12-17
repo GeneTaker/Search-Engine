@@ -43,7 +43,7 @@ public class IndexTest {
         int id1 = index.addDocument(new Document("title very, when", "If your name begins with a H, this is for you!"));
         int id2 = index.addDocument(new Document("dumb title", "WHen you realise you are the one, then the one becomes you"));
 
-        TestUtils.assertListAreEqualIgnoringOrder(index.getPostings("when"), Arrays.asList(new Posting(id2, 1)));
+        TestUtils.assertListAreEqualIgnoringOrder(index.getPostings("when"), Arrays.asList(new Posting(id2, "when", 1)));
         
         
         assertThrows(NullPointerException.class, () -> {
@@ -56,6 +56,6 @@ public class IndexTest {
             index.getPostings("").size();
         });
 
-        TestUtils.assertListAreEqualIgnoringOrder(index.getPostings("you"), Arrays.asList(new Posting(id1, 1), new Posting(id2, 3)));
+        TestUtils.assertListAreEqualIgnoringOrder(index.getPostings("you"), Arrays.asList(new Posting(id1, "you", 1), new Posting(id2, "you", 3)));
     }
 }

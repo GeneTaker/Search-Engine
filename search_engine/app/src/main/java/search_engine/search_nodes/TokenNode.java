@@ -15,4 +15,11 @@ public class TokenNode implements SearchNode {
     public List<Posting> evaluate() {
         return postings;
     }
+
+    @Override
+    public void prettyPrint() {
+        System.err.print("{");
+        postings.forEach(p -> System.err.print(p + "|||"));
+        System.err.print("}");
+    }
 }

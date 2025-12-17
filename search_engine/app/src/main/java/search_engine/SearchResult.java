@@ -21,8 +21,7 @@ public class SearchResult implements Comparable<SearchResult> {
 
     @Override
     public int compareTo(SearchResult o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
+        return Integer.compare(relevance, o.relevance);
     }
 
     

@@ -73,7 +73,6 @@ public class DocumentLoader {
         if (index == -1 || index == fileName.length() - 1) return false;
 
         String s = fileName.substring(index + 1);
-        System.err.println(s);
         if (fileTypes.containsKey(s.toLowerCase())) return true;
 
         return false;

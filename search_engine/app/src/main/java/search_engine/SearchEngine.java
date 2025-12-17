@@ -1,6 +1,9 @@
 package search_engine;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import search_engine.document.Document;
 import search_engine.search_nodes.NodeFactory;
@@ -33,11 +36,22 @@ public class SearchEngine {
      * @return a list of search results
      */
     public List<SearchResult> search(String query) {
-        // SearchNode node = NodeFactory.createNode(index, query);
-        // List<Posting> postings = node.evaluate();
+        SearchNode node = NodeFactory.createNode(index, query);
 
+        if (node == null) return new ArrayList<>();
+        // node.prettyPrint();
 
-        return null;
+        List<Posting> postings = node.evaluate();
+        
+        Map<Integer, Integer> map = new HashMap<>();
+        postings.forEach(p -> map.put(p.getId(), map.getOrDefault(p.getId(), 0) + p.getFrequency()));
+        
+        
+        List<SearchResult> result = new ArrayList<>();
+        
+        map.forEach((key, value) -> result.add(new SearchResult(key, value, index.getTitle(key))));
+
+        return result;
     }
 
     /**

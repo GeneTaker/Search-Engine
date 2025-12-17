@@ -1,5 +1,6 @@
 package search_engine;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,6 +14,6 @@ public class Tokeniser {
         input = input.toLowerCase();
         input = input.replaceAll("\\p{Punct}", "");
 
-        return Arrays.asList(input.split("\\s+"));
+        return new ArrayList<>(Arrays.asList(input.split("\\s+")));
     }
 }

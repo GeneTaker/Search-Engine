@@ -1,6 +1,8 @@
 package search_engine.search_nodes;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import search_engine.Posting;
 
@@ -15,9 +17,30 @@ public class NotNode implements SearchNode {
 
     @Override
     public List<Posting> evaluate() {
+        if (child == null) {
+            return allPostings;
+        }
+
         List<Posting> original = child.evaluate();
-        allPostings.removeAll(original);
+
+        List<Integer> remove = original.stream().distinct().map(o -> o.getId()).toList();
+
+        Set<Integer> set = new HashSet<>();
+        remove.forEach(r -> set.add(r));
+
+        allPostings = allPostings.stream().filter(a -> !set.contains(a.getId())).toList();
         
         return allPostings;
+    }
+
+    @Override
+    public void prettyPrint() {
+        if (child == null) {
+            System.err.println("all");
+            return;
+        }
+        System.err.print("NOT {");
+        child.prettyPrint();
+        System.err.println("\n}");
     }
 }

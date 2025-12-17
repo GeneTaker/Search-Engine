@@ -30,7 +30,7 @@
 
 
 //     Test
-//     @Tag("1-1")
+//     @Tag("1-2")
 //     @Test("Test OR logic")
 //     public void testOr() {
 //         SearchNode root = NodeFactory.createNode();
@@ -38,7 +38,7 @@
 
 
 //     Test
-//     @Tag("1-1")
+//     @Tag("1-3")
 //     @Test("Test NOT logic")
 //     public void testNot() {
 //         SearchNode root = NodeFactory.createNode();
@@ -46,7 +46,7 @@
 
 
 //     Test
-//     @Tag("1-1")
+//     @Tag("1-4")
 //     @Test("Test complex logic")
 //     public void testAll() {
 //         SearchNode root = NodeFactory.createNode();

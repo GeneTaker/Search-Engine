@@ -100,7 +100,7 @@ public class SearchEngineTest {
             new Document("how to train your dragon", "The quick brown fox jumped over the lazy and stupid rabbit, or maybe it could not")
         ));
 
-        List<Document> setDifference = TestUtils.searchToDocuments(engine, "your NOT happy");
+        List<Document> setDifference = TestUtils.searchToDocuments(engine, "your AND NOT happy");
         TestUtils.assertListAreEqualIgnoringOrder(setDifference, Arrays.asList(new Document("banana", "bread is very cool, not your bread though"),
             new Document("how to train your dragon", "The quick brown fox jumped over the lazy and stupid rabbit, or maybe it could not")));
     }
@@ -110,10 +110,11 @@ public class SearchEngineTest {
     @DisplayName("Test logical operators altogether")
     public void testAll() {
         List<Document> results = TestUtils.searchToDocuments(engine, "your AND NOT happy");
-        TestUtils.assertListAreEqualIgnoringOrder(results, Arrays.asList(Arrays.asList(new Document("banana", "bread is very cool, not your bread though"),
-            new Document("how to train your dragon", "The quick brown fox jumped over the lazy and stupid rabbit, or maybe it could not"))));
-    
+        TestUtils.assertListAreEqualIgnoringOrder(results, Arrays.asList(new Document("banana", "bread is very cool, not your bread though"),
+            new Document("how to train your dragon", "The quick brown fox jumped over the lazy and stupid rabbit, or maybe it could not")));
+        
         List<Document> complex = TestUtils.searchToDocuments(engine, "happy AND NOT today OR jumped fox OR NOT your");
+
         TestUtils.assertListAreEqualIgnoringOrder(Arrays.asList(new Document("happy", "happy discord time, you know the drift and the way to your heart"),
             new Document("how to train your dragon", "The quick brown fox jumped over the lazy and stupid rabbit, or maybe it could not")), complex);
     }

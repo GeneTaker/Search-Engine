@@ -2,10 +2,12 @@ package search_engine;
 
 public class Posting {
     private int termFrequency;
+    private String term;
     private int docId;
 
-    public Posting(int docId, int termFrequency) {
+    public Posting(int docId, String term, int termFrequency) {
         this.docId = docId;
+        this.term = term;
         this.termFrequency = termFrequency;
     }
 
@@ -23,22 +25,36 @@ public class Posting {
         return termFrequency;
     }
 
+
+    @Override
+    public String toString() {
+        return "Posting [termFrequency=" + termFrequency + ", term=" + term + ", docId=" + docId + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + docId;
+        return result;
+    }
+
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-
-        if (getClass() != obj.getClass()) return false;
-
-        Posting other = (Posting) obj;
-
-        if (termFrequency != other.termFrequency) {
+        if (this == obj)
+            return true;
+        
+        if (obj == null)
             return false;
-        }
-        if (docId != other.docId) {
+        
+        if (getClass() != obj.getClass())
             return false;
-        }
 
+        Posting other = (Posting) obj;  
+        if (docId != other.docId)
+            return false;
         return true;
     }
+    
+
 }
