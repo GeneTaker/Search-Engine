@@ -25,6 +25,10 @@ public class Posting {
         return termFrequency;
     }
 
+    public String getTerm() {
+        return term;
+    }
+
 
     @Override
     public String toString() {

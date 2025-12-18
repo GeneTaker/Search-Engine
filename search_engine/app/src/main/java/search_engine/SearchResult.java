@@ -2,10 +2,10 @@ package search_engine;
 
 public class SearchResult implements Comparable<SearchResult> {
     private int docId;
-    private int relevance;
+    private double relevance;
     private String title;
 
-    public SearchResult(int docId, int relevance, String title) {
+    public SearchResult(int docId, double relevance, String title) {
         this.docId = docId;
         this.relevance = relevance;
         this.title = title;
@@ -21,7 +21,7 @@ public class SearchResult implements Comparable<SearchResult> {
 
     @Override
     public int compareTo(SearchResult o) {
-        return Integer.compare(relevance, o.relevance);
+        return Double.compare(relevance, o.relevance);
     }
 
     

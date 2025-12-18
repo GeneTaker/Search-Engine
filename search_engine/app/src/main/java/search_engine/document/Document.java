@@ -10,10 +10,24 @@ import search_engine.Tokeniser;
 public class Document {
     private String title;
     private String content;
+    private int length;
+    private static int allLengths = 0;
+    private static int allSize = 0;
 
     public Document(String title, String content) {
         this.title = title;
         this.content = content;
+        this.length = computeDocLength(content) + computeDocLength(title);
+        Document.allLengths += length;
+        allSize++;
+    }
+
+    public static double getAllLengthAverage() {
+        return 1.0 * allLengths / allSize;
+    }
+
+    public static double getAllSize() {
+        return allSize;
     }
 
     public String getTitle() {
@@ -107,5 +121,13 @@ public class Document {
         return true;
     }
 
-    
+    private static int computeDocLength(String s) {
+        if (s == null || s.isEmpty()) return 0;
+
+        return s.split("\\s+").length;
+    }
+
+    public int getDocLength() {
+        return length;
+    }
 }

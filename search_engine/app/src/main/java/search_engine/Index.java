@@ -2,8 +2,10 @@ package search_engine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import search_engine.document.Document;
 
@@ -90,5 +92,19 @@ public class Index {
      */
     public List<Document> getDocuments() {
         return docIdMap.values().stream().toList();
+    }
+
+    public int getDocLength(int docId) {
+        return docIdMap.get(docId).getDocLength();
+    }
+
+    public double getGlobalIdf(String token) {
+        int docCount = docIdMap.size();
+        Set<Posting> uniqueDocs = new HashSet<>();
+        uniqueDocs.addAll(invertedIndex.get(token));
+
+        int matchedDocs = uniqueDocs.size();
+
+        return Math.log((double) (docCount - matchedDocs + 0.5) / (matchedDocs + 0.5) + 1);
     }
 }

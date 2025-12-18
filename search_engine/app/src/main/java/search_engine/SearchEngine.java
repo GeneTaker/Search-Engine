@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.w3c.dom.traversal.DocumentTraversal;
+
 import search_engine.document.Document;
 import search_engine.search_nodes.NodeFactory;
 import search_engine.search_nodes.SearchNode;
@@ -12,6 +14,8 @@ import search_engine.search_nodes.SearchNode;
 public class SearchEngine {
     private Index index = new Index();
     private ResponseFormatter formatter = new ResponseFormatter();
+    private static double k1 = 1.5;
+    private static double b = 0.75;
 
     /**
      * Adds documents to the index
@@ -39,17 +43,25 @@ public class SearchEngine {
         SearchNode node = NodeFactory.createNode(index, query);
 
         if (node == null) return new ArrayList<>();
-        // node.prettyPrint();
 
         List<Posting> postings = node.evaluate();
-        
-        Map<Integer, Integer> map = new HashMap<>();
-        postings.forEach(p -> map.put(p.getId(), map.getOrDefault(p.getId(), 0) + p.getFrequency()));
-        
+
+        double averageDocLength = Document.getAllLengthAverage();
+
+        Map<Integer, Double> scores = new HashMap<>();
+        for (Posting p : postings) {
+            int docId = p.getId();
+            int termFrequency = p.getFrequency();
+            int docLength = index.getDocLength(docId);
+
+            double idf = index.getGlobalIdf(p.getTerm());
+
+            scores.put(docId, scores.getOrDefault(docId, 0.0) + idf * termFrequency * (k1 + 1) / (termFrequency + k1 * (1 - b + b * docLength / averageDocLength)));
+        }
         
         List<SearchResult> result = new ArrayList<>();
-        
-        map.forEach((key, value) -> result.add(new SearchResult(key, value, index.getTitle(key))));
+        scores.forEach((key, value) -> result.add(new SearchResult(key, value, index.getTitle(key))));
+        result.sort((a, b) -> b.compareTo(a));
 
         return result;
     }

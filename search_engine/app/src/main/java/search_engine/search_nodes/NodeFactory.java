@@ -52,7 +52,7 @@ public class NodeFactory {
         }
 
         // Leaf node
-        List<Posting> postings = index.getPostings(query);
+        List<Posting> postings = index.getPostings(query.toLowerCase());
         if (postings != null) return new TokenNode(postings); 
 
         return null;
