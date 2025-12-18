@@ -1,0 +1,14 @@
+The river moved slowly through the city, reflecting windows, clouds, and the occasional bridge. People crossed without noticing the water, focused on messages, schedules, and small decisions that felt important at the time.
+
+A search engine does not understand meaning at first. It only sees tokens, positions, and frequency. Over time, patterns emerge. A word appears often. Another word appears only once, hidden in a long paragraph.
+
+On Tuesday, the system logged an unexpected error. The error was not critical, but it was persistent. Logs were written to disk. The disk filled gradually, byte by byte, until someone noticed the warning light.
+
+Coffee cups were stacked near the server rack. Some were empty. Some were forgotten. The room hummed with fans and quiet optimism.
+
+In a small notebook, someone wrote:
+optimize later
+test now
+document everything
+
+The forest was quiet except for wind and distant birds. Trees do not care about algorithms, but their names still appear in databases, tagged and categorized.
