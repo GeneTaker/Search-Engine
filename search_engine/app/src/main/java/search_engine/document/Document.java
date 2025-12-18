@@ -130,4 +130,11 @@ public class Document {
     public int getDocLength() {
         return length;
     }
+
+    @Override
+    public String toString() {
+        String border = "-".repeat(title.length() + 8);
+        return String.format("%s%n===%s ===%n%s%n%n%s%n", border, title, border, content);
+    }
+
 }

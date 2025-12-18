@@ -24,16 +24,4 @@ public class OrNode implements SearchNode {
 
         return postings.stream().toList();
     }
-
-    @Override
-    public void prettyPrint() {
-        System.err.print("OR {");
-
-        searchNodes.forEach(s -> {
-            s.prettyPrint();
-            System.err.println("|");
-        });
-
-        System.err.println("\n}");
-    }
 }

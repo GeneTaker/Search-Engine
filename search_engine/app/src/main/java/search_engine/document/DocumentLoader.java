@@ -5,22 +5,26 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import search_engine.exceptions.InvalidLoadException;
 
 public class DocumentLoader {
-    private Map<String, Integer> fileTypes = new HashMap<>();
+    private Set<String> fileTypes = new HashSet<>();
     private Path directory;
-    
+
     public DocumentLoader(String directory, List<String> fileTypes) {
-        this.directory = Paths.get(directory);
-        
-        for (String s : fileTypes) this.fileTypes.put(s, 1);
+        this.directory = Paths.get(directory);       
+        for (String s : fileTypes) this.fileTypes.add(s);
     }
+
+    // public void switchDirectory(String directory) {
+    //     this.directory = Paths.get(directory);
+    // }
+
     /**
      * Lazily traverses the file path to return a list of documents, one for each file traversed
      * @throws InvalidLoadException if we fail to read from the directory
@@ -73,7 +77,7 @@ public class DocumentLoader {
         if (index == -1 || index == fileName.length() - 1) return false;
 
         String s = fileName.substring(index + 1);
-        if (fileTypes.containsKey(s.toLowerCase())) return true;
+        if (fileTypes.contains(s.toLowerCase())) return true;
 
         return false;
     }

@@ -33,14 +33,4 @@ public class NotNode implements SearchNode {
         return allPostings;
     }
 
-    @Override
-    public void prettyPrint() {
-        if (child == null) {
-            System.err.println("all");
-            return;
-        }
-        System.err.print("NOT {");
-        child.prettyPrint();
-        System.err.println("\n}");
-    }
 }

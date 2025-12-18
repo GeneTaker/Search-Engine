@@ -30,18 +30,6 @@ public class AndNode implements SearchNode {
         return leftList;
     }
 
-    @Override
-    public void prettyPrint() {
-        System.err.print("AND {");
-        
-        searchNodes.forEach(s -> {
-            s.prettyPrint();
-            System.err.println("|");
-        });
-
-        System.err.println("\n}");
-    }
-
     public List<Posting> intersect(List<Posting> left, List<Posting> right) {        
         List<Posting> result = new ArrayList<>();
         

@@ -72,4 +72,9 @@ public class SearchEngine {
     public List<Document> getDocuments() {
         return index.getDocuments();
     }
+
+    public String openDocument(SearchResult result) {
+        Document doc = index.getDocument(result.getDocId());
+        return doc.toString();
+    }
 }

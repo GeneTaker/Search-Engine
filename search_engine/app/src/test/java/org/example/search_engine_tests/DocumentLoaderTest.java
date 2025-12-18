@@ -59,7 +59,7 @@ public class DocumentLoaderTest {
 
     @Test
     @Tag("Loader-2")
-    @DisplayName("Load a directory of files")
+    @DisplayName("Load a directory of files, and switch path, to a file")
     public void testDirectoryLoad() {
 
         Path path;
@@ -88,7 +88,6 @@ public class DocumentLoaderTest {
             TestUtils.assertListAreEqualIgnoringOrder(titles, Arrays.asList("Crazy Frog", "File"));
             TestUtils.assertListAreEqualIgnoringOrder(contents, Arrays.asList("funkytown apples", "dunkytown rail"));       
         });
-
     }
 
     @Test
