@@ -21,10 +21,6 @@ public class DocumentLoader {
         for (String s : fileTypes) this.fileTypes.add(s);
     }
 
-    // public void switchDirectory(String directory) {
-    //     this.directory = Paths.get(directory);
-    // }
-
     /**
      * Lazily traverses the file path to return a list of documents, one for each file traversed
      * @throws InvalidLoadException if we fail to read from the directory
