@@ -64,3 +64,21 @@ To accomodate, the following classes will be created:
 - **NodeFactory**: A factory class that contains the abstracted creation logic of SearchNodes 
 
 __Additional Note__: Each of these operations will have operator precedence, which we introduce when generating the tree, it will proceed in the order NOT -> AND -> OR. Additionally, we will have an "implicit and" when working with searches which has the highest operator precedence, where all adjacent tokens will have an implicit AND operation between them, thereby allowing us to perform logical operations on multi-word phrases rather than just singular words
+
+## Design Update:
+- To order searches by relevance, by default, the relevance of searches will be evaluated by the BM-25 search algorithm
+
+This will involve the quantities:
+__term frequency__, which involves:
+- frequency that a query term appears in a document, posting term frequency
+
+- number of documents containing a term, map size in search engine
+
+- average document length in the total dataset, a method can be added in index for a total sum of doc lengths
+
+- constant
+- normalisation constant
+
+__IDF__, which involves:
+- total number of documents
+- the number of documents containing a term
