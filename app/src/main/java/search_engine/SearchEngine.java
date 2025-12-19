@@ -11,7 +11,6 @@ import search_engine.search_nodes.SearchNode;
 
 public class SearchEngine {
     private Index index = new Index();
-    private ResponseFormatter formatter = new ResponseFormatter();
     private static double k1 = 1.5;
     private static double b = 0.75;
 
@@ -39,7 +38,6 @@ public class SearchEngine {
      */
     public List<SearchResult> search(String query) {
         SearchNode node = NodeFactory.createNode(index, query);
-
         if (node == null) return new ArrayList<>();
 
         List<Posting> postings = node.evaluate();
@@ -61,7 +59,7 @@ public class SearchEngine {
         List<SearchResult> result = new ArrayList<>();
         scores.forEach((key, value) -> result.add(new SearchResult(key, value, index.getTitle(key))));
         result.sort((a, b) -> b.compareTo(a));
-
+        
         return result;
     }
 

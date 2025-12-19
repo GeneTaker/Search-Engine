@@ -3,12 +3,70 @@
  */
 package org.example;
 
+import java.util.List;
+import java.util.Scanner;
+
+import search_engine.EngineController;
+import search_engine.ResponseFormatter;
+import search_engine.SearchResult;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+    private static ResponseFormatter formatter = new ResponseFormatter();
+    private static int SEARCH_CMD = 8;
+    private static int OPEN_CMD = 6;
+
+    public static String getGreeting() {
+        String greeting = "Welcome to Jeffrey's Custom Search Engine!";
+        String border = "/".repeat(greeting.length() + 8);
+        return String.format("%s%n=== %s ===%n%s", border, greeting, border);
+    }
+
+    public static String help() {
+        String helpMsg = "To search a query, please follow the given format: \"/search [insert query here]\"";
+        String openMsg = "To open a document, please enter \"/open [index of the document presented]\"";
+        String exitMsg = "To exit the search engine, please enter \"/exit\"";
+        String border = ".".repeat(helpMsg.length() + 6);
+        return String.format("%s%n  <%s>  %n  <%s>  %n  <%s>  %n%s", border, helpMsg, openMsg, exitMsg, border);
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        System.out.println(App.getGreeting());
+        System.out.println(App.help());
+        
+        Scanner scanner = new Scanner(System.in);
+        EngineController controller = new EngineController();
+        
+        try {
+            controller.loadDocuments(System.getProperty("user.dir") + "/app/src/main/resources");
+        } catch (Exception e) {
+            System.out.println("<< Unable to load documents :( >>");
+            e.printStackTrace();
+        }        
+
+        while (true) {
+            System.out.print("Please enter your command here: ");
+            String input = scanner.nextLine();
+            
+            if (input.startsWith("/search ")) {
+
+                List<SearchResult> results = controller.search(input.substring(SEARCH_CMD));
+                System.out.println(formatter.formatText(results));
+            
+            } else if (input.startsWith("/open ")) {
+                
+                String document = controller.openDocument(Integer.parseInt(input.substring(OPEN_CMD)));
+                System.out.println(document);
+
+            } else if (input.equals("/exit")) {
+                break;
+            } else {
+                System.out.println("Invalid command given");
+                System.out.println(App.help());
+            }
+        }
+
+        System.out.println("Exiting the search engine, hope to see you again!");
+        scanner.close();
+
     }
 }

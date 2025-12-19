@@ -75,6 +75,5 @@ public class IntegrationTest {
         assertTrue(controller.openDocument(2).contains("How To Train Your Dragon"));
         assertTrue(controller.openDocument(3).contains("Happy"));
         
-
     }
 }

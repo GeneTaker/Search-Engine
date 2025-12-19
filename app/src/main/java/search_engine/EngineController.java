@@ -52,5 +52,4 @@ public class EngineController {
 
         return searchEngine.openDocument(currentlyPresented.get(index));
     }
-
 }
