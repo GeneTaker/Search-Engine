@@ -6,7 +6,6 @@ to create a search engine, by following the software development lifecycle.
 ## Requirements:
 - Our search engine must be able to map searches to documents or sites that
 contain the phrase
-- Be able to discern sites from almost-correct searches
 - The system should be able to accept queries from the user, and tokenise it
 - Our system should present a list of pages that the user might be searching for, sorted by relevance
 - Our system should be able to present/output the page to the user
