@@ -59,7 +59,7 @@ public class SearchEngine {
         List<SearchResult> result = new ArrayList<>();
         scores.forEach((key, value) -> result.add(new SearchResult(key, value, index.getTitle(key))));
         result.sort((a, b) -> b.compareTo(a));
-        
+
         return result;
     }
 
@@ -70,6 +70,9 @@ public class SearchEngine {
         return index.getDocuments();
     }
 
+    /**
+     * @returns the title and contents of a docuemnt
+     */
     public String openDocument(SearchResult result) {
         Document doc = index.getDocument(result.getDocId());
         return doc.toString();
