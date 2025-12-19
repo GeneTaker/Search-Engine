@@ -82,3 +82,9 @@ __term frequency__, which involves:
 __IDF__, which involves:
 - total number of documents
 - the number of documents containing a term
+
+
+## Current Notes:
+- I have currently completed the search engine, although, to extend on the project, features such as tries could be applied
+to produce autocomplete for search queries, priority queues/heaps could be applied to take a controlled number of results that a user would view at any given time
+- Additionally, to extend on the project, Lucene could be integrated into the system to improve the quality of it and further my learning of relevant tools
