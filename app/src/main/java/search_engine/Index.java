@@ -58,7 +58,7 @@ public class Index {
      * @return returns a list of postings that correspond to the term
      */
     public List<Posting> getPostings(String term) {
-        return invertedIndex.get(term);
+        return invertedIndex.getOrDefault(term, new ArrayList<>());
     }
 
     /**

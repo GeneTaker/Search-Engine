@@ -24,6 +24,7 @@ public class AndNode implements SearchNode {
             SearchNode node = searchNodes.get(i);
             if (node == null) return new ArrayList<>();
 
+
             leftList = intersect(leftList, node.evaluate());
         }
         
